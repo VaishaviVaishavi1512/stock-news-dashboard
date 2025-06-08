@@ -16,18 +16,19 @@ stocks = [
     {"name": "Bharat Electronics", "file": "bharat_electronics"},
 ]
 
-# --- Layout in cards (3 columns) ---
+# --- Layout with buttons to switch pages ---
 cols = st.columns(3)
 for i, stock in enumerate(stocks):
     with cols[i % 3]:
         st.subheader(f"📌 {stock['name']}")
         st.markdown("Get real-time news, AI sentiment analysis, and price predictions.")
-        if st.button(f"👉 Go to {stock['name']}", key=stock['file']):
-            st.switch_page(f"pages/{stock['file']}.py")
+        if st.button(f"👉 Go to {stock['name']}"):
+            st.switch_page(stock['file'])
 
-# --- Footer ---
+# Optional Footer
 st.markdown("---")
 st.markdown(
     f"<small>Last updated: {datetime.now().strftime('%B %d, %Y %H:%M')} | Built with ❤️ using Streamlit</small>",
     unsafe_allow_html=True,
 )
+
